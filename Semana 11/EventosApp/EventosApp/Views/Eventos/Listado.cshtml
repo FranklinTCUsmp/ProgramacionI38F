@@ -1,0 +1,42 @@
+﻿@{
+    Layout = null;
+    var eventos = (List<EventosApp.Models.Entidades.Evento>)ViewBag.ListadoEventos;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Listado de eventos actuales</title>
+    <link href="~/Content/CSS/EventosApp.css" rel="stylesheet" />
+</head>
+<body>
+    <header>
+        <img height="200" src="http://cdn5.redfrancia.com/wp-content/uploads/2013/04/logo_eventos_redfrancia-com.png?w=240" />
+    </header>
+    <nav>
+        <ul>
+            <li><a href="/eventos/listado">Listado de eventos</a></li>
+            <li><a href="/eventos/promociones">Promociones</a></li>
+            <li><a href="/portal/contacto">Contacto</a></li>
+        </ul>
+    </nav>
+    <div>
+        <h1>Eventos actuales</h1>
+
+
+        @foreach(var evento in eventos)
+        {
+            <div>
+                <h2>@evento.Nombre</h2>
+                <img src="@evento.Foto" />
+            </div>
+        }
+
+    </div>
+    <footer>
+        &copy; 2017 EventosApp
+    </footer>
+</body>
+</html>
