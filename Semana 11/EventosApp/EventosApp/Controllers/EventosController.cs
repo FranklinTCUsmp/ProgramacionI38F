@@ -14,10 +14,16 @@ namespace EventosApp.Controllers
             var modelo = new EventosModel();
             var eventos = modelo.ListadoEventos();
 
-            ViewBag.ListadoEventos = eventos;
+            return View(eventos);
+        }
 
+        public ActionResult Ver(int id)
+        {
+            var modelo = new EventosModel();
 
-            return View();
+            var evento = modelo.GetEventoPorId(id);
+
+            return View(evento);
         }
 
         public ActionResult Promociones()

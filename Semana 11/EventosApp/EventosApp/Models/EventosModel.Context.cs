@@ -27,5 +27,6 @@ namespace EventosApp.Models
     
         public virtual DbSet<Evento> Eventos { get; set; }
         public virtual DbSet<Precio> Precios { get; set; }
+        public virtual DbSet<Consulta> Consultas { get; set; }
     }
 }

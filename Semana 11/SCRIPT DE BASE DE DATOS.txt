@@ -1,0 +1,86 @@
+USE [EventosApp]
+GO
+/****** Object:  Table [dbo].[Consultas]    Script Date: 31/10/2017 9:38:59 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Consultas](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[NombreCompleto] [varchar](50) NULL,
+	[Asunto] [varchar](50) NULL,
+	[Mensaje] [varchar](max) NULL,
+	[FechaCreacion] [datetime] NULL,
+ CONSTRAINT [PK_Consultas] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Eventos]    Script Date: 31/10/2017 9:38:59 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Eventos](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[Nombre] [varchar](50) NULL,
+	[Foto] [varchar](500) NULL,
+	[FechaInicio] [datetime] NULL,
+ CONSTRAINT [PK_Eventos] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+/****** Object:  Table [dbo].[Precios]    Script Date: 31/10/2017 9:38:59 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Precios](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[EventoId] [int] NULL,
+	[Zona] [varchar](50) NULL,
+	[Precio] [decimal](6, 2) NULL,
+ CONSTRAINT [PK_Precios] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+SET IDENTITY_INSERT [dbo].[Consultas] ON 
+GO
+INSERT [dbo].[Consultas] ([Id], [NombreCompleto], [Asunto], [Mensaje], [FechaCreacion]) VALUES (1, N'Jonathan', N'Duda', N'ABC', CAST(N'2017-10-31T21:35:59.507' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Consultas] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Eventos] ON 
+GO
+INSERT [dbo].[Eventos] ([Id], [Nombre], [Foto], [FechaInicio]) VALUES (1, N'Partido Repechaje', N'https://cde.peru.com/ima/0/1/7/1/8/1718692/611x458/peru.jpg', CAST(N'2017-11-15T00:00:00.000' AS DateTime))
+GO
+INSERT [dbo].[Eventos] ([Id], [Nombre], [Foto], [FechaInicio]) VALUES (2, N'Miaustura', N'https://img.peru21.pe/files/article_content_ec_fotos/uploads/2017/09/20/59c28ba453b9c.jpeg', CAST(N'2017-11-25T00:00:00.000' AS DateTime))
+GO
+SET IDENTITY_INSERT [dbo].[Eventos] OFF
+GO
+SET IDENTITY_INSERT [dbo].[Precios] ON 
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (1, 1, N'Norte/Sur', CAST(80.00 AS Decimal(6, 2)))
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (2, 1, N'Occidente', CAST(300.00 AS Decimal(6, 2)))
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (3, 1, N'Oriente', CAST(300.00 AS Decimal(6, 2)))
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (4, 2, N'Entrada General', CAST(20.00 AS Decimal(6, 2)))
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (5, 2, N'Preventa', CAST(10.00 AS Decimal(6, 2)))
+GO
+INSERT [dbo].[Precios] ([Id], [EventoId], [Zona], [Precio]) VALUES (6, 2, N'Entrada VIP', CAST(30.00 AS Decimal(6, 2)))
+GO
+SET IDENTITY_INSERT [dbo].[Precios] OFF
+GO
+ALTER TABLE [dbo].[Precios]  WITH CHECK ADD  CONSTRAINT [FK_Precios_Eventos] FOREIGN KEY([EventoId])
+REFERENCES [dbo].[Eventos] ([Id])
+GO
+ALTER TABLE [dbo].[Precios] CHECK CONSTRAINT [FK_Precios_Eventos]
+GO

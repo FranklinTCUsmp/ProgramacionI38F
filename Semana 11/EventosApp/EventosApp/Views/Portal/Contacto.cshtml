@@ -1,31 +1,30 @@
-﻿@{
-    Layout = null;
+﻿@model EventosApp.Models.Consulta
+
+@{
+    Layout = "~/Views/Shared/Plantilla.cshtml";
 }
 
-<!DOCTYPE html>
+<h1>Contacto</h1>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Listado de eventos actuales</title>
-    <link href="~/Content/CSS/EventosApp.css" rel="stylesheet" />
-</head>
-<body>
-    <header>
-        <img height="200" src="http://cdn5.redfrancia.com/wp-content/uploads/2013/04/logo_eventos_redfrancia-com.png?w=240" />
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/eventos/listado">Listado de eventos</a></li>
-            <li><a href="/eventos/promociones">Promociones</a></li>
-            <li><a href="/portal/contacto">Contacto</a></li>
-        </ul>
-    </nav>
-    <div>
-        <h1>Contacto</h1>
+<form action="~/portal/procesarcontacto" method="post">
+
+    <div class="fila">
+        <label>Nombre completo:</label>
+        @Html.TextBoxFor(m => m.NombreCompleto)
     </div>
-    <footer>
-        &copy; 2017 EventosApp
-    </footer>
-</body>
-</html>
+
+    <div class="fila">
+        <label>Asunto:</label>
+        @Html.TextBoxFor(m => m.Asunto)
+    </div>
+
+    <div class="fila">
+        <label>Mensaje:</label>
+        @Html.TextAreaFor(m => m.Mensaje)
+    </div>
+
+    <div class="fila">
+        <button>Enviar consulta</button>
+    </div>
+
+</form>

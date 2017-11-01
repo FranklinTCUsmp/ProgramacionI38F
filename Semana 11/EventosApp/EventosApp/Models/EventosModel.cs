@@ -16,5 +16,14 @@ namespace EventosApp.Models
 
             return eventos;
         }
+
+        public Evento GetEventoPorId(int id)
+        {
+            var contexto = new EventosAppEntities();
+
+            var evento = contexto.Eventos.FirstOrDefault(e => e.Id == id);
+
+            return evento;
+        }
     }
 }

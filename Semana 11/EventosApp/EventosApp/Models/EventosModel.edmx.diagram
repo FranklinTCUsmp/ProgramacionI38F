@@ -8,6 +8,7 @@
         <EntityTypeShape EntityType="EventosAppModel.Evento" Width="1.5" PointX="0.75" PointY="0.875" IsExpanded="true" />
         <EntityTypeShape EntityType="EventosAppModel.Precio" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
         <AssociationConnector Association="EventosAppModel.FK_Precios_Eventos" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="EventosAppModel.Consulta" Width="1.5" PointX="6" PointY="1.25" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

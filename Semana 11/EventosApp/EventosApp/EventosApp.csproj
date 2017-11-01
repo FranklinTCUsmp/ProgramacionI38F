@@ -136,6 +136,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Consulta.cs">
+      <DependentUpon>EventosModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Evento.cs">
       <DependentUpon>EventosModel.tt</DependentUpon>
     </Compile>
@@ -155,6 +158,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>EventosModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\PortalModel.cs" />
     <Compile Include="Models\Precio.cs">
       <DependentUpon>EventosModel.tt</DependentUpon>
     </Compile>
@@ -168,10 +172,11 @@
     <None Include="packages.config" />
     <Content Include="Views\Eventos\Listado.cshtml" />
     <Content Include="Views\Portal\Contacto.cshtml" />
-    <Content Include="Views\_ViewStart.cshtml" />
-    <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Usuarios\Index.cshtml" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+    <Content Include="Views\Shared\Plantilla.cshtml" />
+    <Content Include="Views\Eventos\Ver.cshtml" />
+    <Content Include="Views\Portal\Confirmacion.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

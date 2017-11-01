@@ -1,4 +1,5 @@
-﻿using System;
+﻿using EventosApp.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -10,6 +11,21 @@ namespace EventosApp.Controllers
     {
         // GET: Portal
         public ActionResult Contacto()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ProcesarContacto(Consulta consulta)
+        {
+            var modelo = new PortalModel();
+
+            modelo.GuardarConsulta(consulta);
+
+            return RedirectToAction("Confirmacion");
+        }
+
+        public ActionResult Confirmacion()
         {
             return View();
         }

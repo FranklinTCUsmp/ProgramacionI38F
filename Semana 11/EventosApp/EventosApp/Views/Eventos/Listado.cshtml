@@ -1,50 +1,26 @@
-﻿@{
-    Layout = null;
-    var eventos = (List<EventosApp.Models.Evento>)ViewBag.ListadoEventos;
+﻿@model List<EventosApp.Models.Evento>
+
+@{
+    Layout = "~/Views/Shared/Plantilla.cshtml";
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Listado de eventos actuales</title>
-    <link href="~/Content/CSS/EventosApp.css" rel="stylesheet" />
-</head>
-<body>
-    <header>
-        <img height="200" src="http://cdn5.redfrancia.com/wp-content/uploads/2013/04/logo_eventos_redfrancia-com.png?w=240" />
-    </header>
-    <nav>
-        <ul>
-            <li><a href="/eventos/listado">Listado de eventos</a></li>
-            <li><a href="/eventos/promociones">Promociones</a></li>
-            <li><a href="/portal/contacto">Contacto</a></li>
-        </ul>
-    </nav>
+<h1>Eventos actuales</h1>
+
+@foreach (var evento in Model)
+{
     <div>
-        <h1>Eventos actuales</h1>
+        <h2>@evento.Nombre</h2>
+        <a href="~/eventos/ver/@evento.Id">
+            <img src="@evento.Foto" />
+        </a>
+        <h3>Lista de precios para este evento</h3>
 
-
-        @foreach(var evento in eventos)
-        {
-            <div>
-                <h2>@evento.Nombre</h2>
-                <img src="@evento.Foto" />
-                <h3>Lista de precios para este evento</h3>
-
-                <ul>
-                    @foreach (var precio in evento.Precios)
-                    {
-                        <li>@precio.Zona: @precio.Precio1</li>
-                    }
-                </ul>
-            </div>
-        }
-
+        <ul>
+            @foreach (var precio in evento.Precios)
+            {
+                <li>@precio.Zona: @precio.Precio1</li>
+            }
+        </ul>
     </div>
-    <footer>
-        &copy; 2017 EventosApp
-    </footer>
-</body>
-</html>
+}
